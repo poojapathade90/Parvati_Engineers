@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products | Parvati Engineers</title>
+
+<style>
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #f0f4f8;
+  color: #1f2937;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===== NAVBAR (MATCH INDEX) ===== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, #1a2942 0%, #2d4263 100%);
+}
+
+nav .container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+}
+
+nav p {
+  font-size: 15px;
+  color: #d1d5db;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.nav-menu a:hover {
+  color: #fb923c;
+}
+
+.nav-menu a.active {
+  color: orange;
+  font-weight: bold;
+  border-bottom: 2px solid orange;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+}
+
+/* ===== HERO ===== */
+.hero {
+  text-align: center;
+  padding: 60px 20px 40px;
+  color: white;
+  background: linear-gradient(135deg, #1a2942 0%, #2d4263 100%);
+  border-radius: 12px;
+  margin: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.hero h1 {
+  font-size: clamp(28px, 5vw, 48px);
+  margin-bottom: 12px;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
+  background: rgba(255, 255, 255, 0.1);
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+
+.hero p {
+  font-size: clamp(14px, 2.5vw, 18px);
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+}
+
+/* ===== PRODUCTS GRID ===== */
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.card .title {
+  font-weight: 600;
+  font-size: 15px;
+  color: #1a2942;
+  margin-bottom: 8px;
+}
+
+.card .btn {
+  background: #1a2942;
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.card .btn:hover {
+  background: #fb923c;
+}
+
+/* ===== CONTACT RIGHT-SIDE ===== */
+#contact {
+  display: flex;
+  justify-content: flex-end;
+  padding: 40px 20px;
+}
+
+#contact div {
+  text-align: right;
+  background: #ffffff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+#contact h2 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  color: #1a2942;
+}
+
+#contact p {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: linear-gradient(135deg, #1a2942 0%, #2d4263 100%);
+  color: #d1d5db;
+  text-align: center;
+  padding: 25px 20px;
+  font-size: 14px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  #contact { justify-content: center; }
+  #contact div { text-align: center; }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  .nav-menu { display: none; flex-direction: column; width: 100%; margin-top: 16px; }
+  .nav-menu.show { display: flex; }
+  .hero { padding: 50px 20px 30px; margin: 10px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="container">
+    <div>
+      <h1>Parvati Engineers</h1>
+      <p>Supplier of Plastic Caps for Hydraulic Oil Ports</p>
+    </div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <div id="navMenu" class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Our Products</h1>
+  <p>Explore our wide range of hydraulic accessories and plastic caps, designed for durability and precision.</p>
+</section>
+
+<!-- PRODUCTS GRID -->
+<main>
+  <div class="grid">
+    <div class="card">
+      <img src="img102.png" alt="Female Metric Caps">
+      <div class="title">Female Metric Caps</div>
+      <a href="contact.html" class="btn">Request Quote</a>
+    </div>
+    <div class="card">
+      <img src="img104.png" alt="Male Metric Parts">
+      <div class="title">Male Metric Parts</div>
+      <a href="contact.html" class="btn">Request Quote</a>
+    </div>
+    <div class="card">
+      <img src="img103.png" alt="Cv Joints Boots">
+      <div class="title">Cv Joints Boots</div>
+      <a href="contact.html" class="btn">Request Quote</a>
+    </div>
+    <div class="card">
+      <img src="SafetyCap.jpg" alt="ST VALVE SAFETY CAP">
+      <div class="title">ST VALVE SAFETY CAP</div>
+      <a href="contact.html" class="btn">Request Quote</a>
+    </div>
+    <div class="card">
+      <img src="FemaleUNFparts.png" alt="Female UNF Parts">
+      <div class="title">Female UNF Parts</div>
+      <a href="contact.html" class="btn">Request Quote</a>
+    </div>
+    <div class="card">
+      <img src="MaleUNFparts.png" alt="Male UNF Parts">
+      <div class="title">Male UNF Parts</div>
+      <a href="contact.html" class="btn">Request Quote</a>
+    </div>
+    <div class="card">
+      <img src="DustCover.png" alt="Dust Cover">
+      <div class="title">Dust Cover</div>
+      <a href="contact.html" class="btn">Request Quote</a>
+    </div>
+    <div class="card">
+      <img src="MaleMetricParts.png" alt="Male Metric Parts">
+      <div class="title">Male Metric Parts</div>
+      <a href="contact.html" class="btn">Request Quote</a>
+    </div>
+    <div class="card">
+      <img src="FemaleMetricParta.png" alt="Female Metric Parts">
+      <div class="title">Female Metric Parts</div>
+      <a href="contact.html" class="btn">Request Quote</a>
+    </div>
+    <div class="card">
+      <img src="GreaseNipple.png" alt="Grease Nipples">
+      <div class="title">Grease Nipples</div>
+      <a href="contact.html" class="btn">Request Quote</a>
+    </div>
+  </div>
+</main>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div>
+    <h2>Contact Us</h2>
+    <p>Phone No.: <b>+919881198517</b></p>
+    <p>Email: <b>raut@parvatiengineers.com</b></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Parvati Engineers. All rights reserved. Excellence in Engineering.</p>
+</footer>
+
+</body>
+</html>
